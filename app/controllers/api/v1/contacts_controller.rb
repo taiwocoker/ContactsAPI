@@ -4,6 +4,11 @@ class Api::V1::ContactsController < ApplicationController
    render json: @contacts
   end
 
+  def show
+    @contact = Contact.find(params[:id])
+    render json: @contact
+  end
+
   def create
    @contact = Contact.new(contact_params)
     if @contact.save
