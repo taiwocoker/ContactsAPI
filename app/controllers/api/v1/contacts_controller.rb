@@ -1,4 +1,5 @@
 class Api::V1::ContactsController < ApplicationController
+  before_action :set_contact, only: [:show, :edit, :update, :destroy, :versions]
   def index
    @contacts = Contact.all
    render json: @contacts
@@ -28,6 +29,11 @@ class Api::V1::ContactsController < ApplicationController
    end
   end
 
+  def versions
+    @versions = @contact.versions
+    render json: @versions
+  end
+
   def destroy
    @contact = Contact.find(params[:id])
    if @contact
@@ -39,6 +45,11 @@ class Api::V1::ContactsController < ApplicationController
   end
 
   private
+
+  def set_contact
+    @contact = Contact.find(params[:id])
+  end
+
   def contact_params
    params.require(:contact).permit(:first_name, :last_name, :email, :phone_number)
   end
