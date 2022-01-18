@@ -20,7 +20,7 @@ class Api::V1::ContactsController < ApplicationController
   end
 
   def update
-   @contact = Contact.find(params[:id])
+    @contact = Contact.find(params[:id])
    if @contact
     @contact.update(contact_params)
     render json: {message: "Contact successfully updated."}, status: 200
@@ -30,8 +30,8 @@ class Api::V1::ContactsController < ApplicationController
   end
 
   def versions
-    @contacts = @contact.versions
-    render json: @contacts
+    @versions = @contact.versions
+    render json: @versions
   end
 
   def destroy
