@@ -6,7 +6,6 @@ class Api::V1::ContactsController < ApplicationController
   end
 
   def show
-    @contact = Contact.find(params[:id])
     render json: @contact
   end
 
@@ -20,7 +19,6 @@ class Api::V1::ContactsController < ApplicationController
   end
 
   def update
-    @contact = Contact.find(params[:id])
    if @contact
     @contact.update(contact_params)
     render json: {message: "Contact successfully updated."}, status: 200
@@ -35,7 +33,6 @@ class Api::V1::ContactsController < ApplicationController
   end
 
   def destroy
-   @contact = Contact.find(params[:id])
    if @contact
     @contact.destroy
     render json: {message: "Contact successfully deleted."}, status: 200
