@@ -28,8 +28,8 @@ class Api::V1::ContactsController < ApplicationController
   end
 
   def versions
-    @contacts = @contact.versions
-    render json: @contacts
+    @versions = @contact.versions
+    render json: @versions
   end
 
   def destroy
